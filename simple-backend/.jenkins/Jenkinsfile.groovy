@@ -1,10 +1,10 @@
 pipeline {
-    agent {
-        any
-    }
+    agent any
     stages {
         stage("List files") {
-            sh "ls ."
+            steps {
+                sh "ls ."
+            }
         }
     }
 }
