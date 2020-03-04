@@ -8,7 +8,7 @@ pipeline {
 
     parameters {
         choice(name: 'PROFILE', choices: ['local', 'dev', 'other'], description: '')
-        string(name: 'PRODUCT_NAME', defaultValue: 'Name', description: '')
+        string(name: 'PRODUCT_NAME', defaultValue: 'default value', description: '')
     }
 
     stages {
@@ -24,7 +24,7 @@ pipeline {
         }
         stage("Run jar") {
             steps {
-                sh "cd simple-backend/target && java -jar app.jar --spring.profiles.active=$params.PROFILE --PRODUCTNAME=$params.PRODUCT_NAME"
+                sh "cd simple-backend/target && java -jar app.jar --spring.profiles.active=$params.PROFILE.local --PRODUCTNAME=$params.PRODUCT_NAME"
             }
         }
     }
