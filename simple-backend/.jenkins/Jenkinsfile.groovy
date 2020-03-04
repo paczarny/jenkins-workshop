@@ -54,7 +54,7 @@ pipeline {
                         --productName=$params.PRODUCT_NAME \
                         --salesforce.username=$PASS_USERNAME \
                         --salesforce.password=$PASS \
-                        --salesforce.clientId=$PASS_CLIENT_ID
+                        --salesforce.clientId=$PASS_CLIENT_ID \
                         --salesforce.clientSecret=$PASS_CLIENT_SECRET
                       """
                 }
