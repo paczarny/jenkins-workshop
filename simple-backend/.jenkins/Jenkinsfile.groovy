@@ -62,29 +62,5 @@ pipeline {
                 }
             }
         }
-
-        stage("Run jar") {
-            if($params.PROFILE != 'custom') {
-                steps {
-                    dir('simple-backend/target') {
-                        sh "java -jar app.jar --spring.profiles.active=$params.PROFILE --productName=$params.PRODUCT_NAME"
-                    }
-                }
-            } else {
-                steps {
-                    dir('simple-backend/target') {
-                        sh """java -jar app.jar \
-                        --spring.profiles.active=$params.PROFILE \
-                        --productName=$params.PRODUCT_NAME \
-                        --salesforce.username=$PASS_USERNAME \
-                        --salesforce.password=$PASS \
-                        --salesforce.clientId=$PASS_CLIENT_ID \
-                        --salesforce.clientSecret=$PASS_CLIENT_SECRET \
-                        --salesforce.url=$SALESFORCE_URL
-                      """
-                    }
-                }
-            }
-        }
     }
 }
