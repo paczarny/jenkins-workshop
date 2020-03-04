@@ -36,8 +36,8 @@ pipeline {
                 }
             }
         }
-        stage {
-            steps('list credentials') {
+        stage('list credentials') {
+            steps {
                 sh "echo $PASS1"
                 sh "echo $PASS2"
                 sh "echo $PASS3"
