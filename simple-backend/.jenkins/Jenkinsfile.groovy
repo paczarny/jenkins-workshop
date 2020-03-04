@@ -41,7 +41,7 @@ pipeline {
                 }
             }
         }
-        stage("Run jar with dev env") {
+        stage("Run jar with other") {
             when {
                 expression {
                     $params.PROFILE != 'other'
