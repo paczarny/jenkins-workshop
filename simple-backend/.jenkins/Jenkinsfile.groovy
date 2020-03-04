@@ -40,6 +40,8 @@ pipeline {
                     sh "java -jar app.jar --spring.profiles.active=$params.PROFILE --productName=$params.PRODUCT_NAME"
                 }
             }
+        }
+        stage("Run jar with dev env") {
             when {
                 expression {
                     $params.PROFILE != 'other'
