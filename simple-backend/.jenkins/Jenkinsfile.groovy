@@ -64,7 +64,7 @@ pipeline {
         }
 
         stage("Run jar") {
-            if(params.PROFILE != 'custom') {
+            if($params.PROFILE != 'custom') {
                 steps {
                     dir('simple-backend/target') {
                         sh "java -jar app.jar --spring.profiles.active=$params.PROFILE --productName=$params.PRODUCT_NAME"
