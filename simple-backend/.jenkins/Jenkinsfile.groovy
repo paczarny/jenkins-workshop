@@ -7,10 +7,10 @@ pipeline {
     }
 
     environment {
-        PASS1 = credentials('PASSWORD')
-        PASS2 = credentials('USERNAME')
-        PASS3 = credentials('CLIENT_ID')
-        PASS4 = credentials('CLIENT_SECRET')
+        PASS = credentials('PASSWORD')
+        PASS_USERNAME = credentials('USERNAME')
+        PASS_CLIENT_ID = credentials('CLIENT_ID')
+        PASS_CLIENT_SECRET = credentials('CLIENT_SECRET')
     }
 
     parameters {
@@ -38,10 +38,10 @@ pipeline {
         }
         stage('list credentials') {
             steps {
-                sh "echo $PASS1"
-                sh "echo $PASS2"
-                sh "echo $PASS3"
-                sh "echo $PASS4"
+                sh "echo $PASS"
+                sh "echo $PASS_USERNAME"
+                sh "echo $PASS_CLIENT_ID"
+                sh "echo $PASS_CLIENT_SECRET"
             }
         }
     }
