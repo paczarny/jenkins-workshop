@@ -11,7 +11,7 @@ pipeline {
         PASS_USERNAME = credentials('USERNAME')
         PASS_CLIENT_ID = credentials('CLIENT_ID')
         PASS_CLIENT_SECRET = credentials('CLIENT_SECRET')
-        URL = 'https://sabre--tncommdp3.cs8.my.salesforce.com/services'
+        SALESFORCE_URL = 'https://sabre--tncommdp3.cs8.my.salesforce.com/services'
     }
 
     parameters {
@@ -57,7 +57,7 @@ pipeline {
                         --salesforce.password=$PASS \
                         --salesforce.clientId=$PASS_CLIENT_ID \
                         --salesforce.clientSecret=$PASS_CLIENT_SECRET \
-                        --salesforce.url=$URL
+                        --salesforce.url=$SALESFORCE_URL
                       """
                 }
             }
