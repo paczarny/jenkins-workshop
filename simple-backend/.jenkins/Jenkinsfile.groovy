@@ -6,7 +6,7 @@ pipeline {
         }
     }
 
-    enviroment {
+    enviroNment {
         PASS1 = credentials('PASSWORD')
         PASS2 = credentials('USERNAME')
         PASS3 = credentials('CLIENT_ID')
