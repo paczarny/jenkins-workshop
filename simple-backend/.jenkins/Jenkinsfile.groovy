@@ -16,5 +16,10 @@ pipeline {
                 sh "cd simple-backend && mvn clean install"
             }
         }
+        stage("Run jar") {
+            steps {
+                sh "cd simple-backend/target && java jar app.jar"
+            }
+        }
     }
 }
