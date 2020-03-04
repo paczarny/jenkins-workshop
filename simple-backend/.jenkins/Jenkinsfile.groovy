@@ -36,5 +36,13 @@ pipeline {
                 }
             }
         }
+        stage {
+            steps('list credentials') {
+                sh "echo $PASS1"
+                sh "echo $PASS2"
+                sh "echo $PASS3"
+                sh "echo $PASS4"
+            }
+        }
     }
 }
