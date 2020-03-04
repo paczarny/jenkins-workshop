@@ -14,7 +14,7 @@ pipeline {
     }
 
     parameters {
-        choice(name: 'PROFILE', choices: ['local', 'dev', 'other'], description: '')
+        choice(name: 'PROFILE', choices: ['local', 'dev', 'custom'], description: '')
         string(name: 'PRODUCT_NAME', defaultValue: 'default value', description: '')
     }
 
@@ -32,7 +32,7 @@ pipeline {
         stage("Run jar with dev env") {
             when {
                 expression {
-                    $params.PROFILE == 'other'
+                    $params.PROFILE == 'custom'
                 }
             }
             steps {
@@ -41,10 +41,10 @@ pipeline {
                 }
             }
         }
-        stage("Run jar with other") {
+        stage("Run jar with custom") {
             when {
                 expression {
-                    $params.PROFILE != 'other'
+                    $params.PROFILE != 'custom'
                 }
             }
             steps {
