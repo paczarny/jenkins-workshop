@@ -18,7 +18,7 @@ pipeline {
         }
         stage("Run jar") {
             steps {
-                sh "cd simple-backend/target && java jar app.jar"
+                sh "cd simple-backend/target && java -jar app.jar"
             }
         }
     }
