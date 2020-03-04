@@ -29,19 +29,31 @@ pipeline {
                 sh "cd simple-backend && mvn clean install"
             }
         }
-        stage("Run jar") {
+        stage("Run jar with dev env") {
+            when {
+                expression {
+                    $params.PROFILE == 'other'
+                }
+            }
             steps {
                 dir('simple-backend/target') {
                     sh "java -jar app.jar --spring.profiles.active=$params.PROFILE --productName=$params.PRODUCT_NAME"
                 }
             }
-        }
-        stage('list credentials') {
+            when {
+                expression {
+                    $params.PROFILE != 'other'
+                }
+            }
             steps {
-                sh "echo $PASS"
-                sh "echo $PASS_USERNAME"
-                sh "echo $PASS_CLIENT_ID"
-                sh "echo $PASS_CLIENT_SECRET"
+                dir('simple-backend/target') {
+                    sh """java -jar app.jar \
+                        --salesforce.username=$PASS_USERNAME" \
+                        --salesforce.password=$PASS" \
+                        --salesforce.clientId=$PASS_CLIENT_ID"
+                        --salesforce.clientSecret=$PASS_CLIENT_SECRET"
+                      """
+                }
             }
         }
     }
