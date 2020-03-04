@@ -32,7 +32,7 @@ pipeline {
         stage("Run jar with dev env") {
             when {
                 expression {
-                    params.PROFILE == 'custom'
+                    params.PROFILE != 'custom'
                 }
             }
             steps {
@@ -44,7 +44,7 @@ pipeline {
         stage("Run jar with custom") {
             when {
                 expression {
-                    params.PROFILE != 'custom'
+                    params.PROFILE == 'custom'
                 }
             }
             steps {
