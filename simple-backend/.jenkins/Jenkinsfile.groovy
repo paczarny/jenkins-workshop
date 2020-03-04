@@ -6,6 +6,13 @@ pipeline {
         }
     }
 
+    enviroment {
+        PASS1 = credentials('PASSWORD')
+        PASS2 = credentials('USERNAME')
+        PASS3 = credentials('CLIENT_ID')
+        PASS4 = credentials('CLIENT_SECRET')
+    }
+
     parameters {
         choice(name: 'PROFILE', choices: ['local', 'dev', 'other'], description: '')
         string(name: 'PRODUCT_NAME', defaultValue: 'default value', description: '')
