@@ -5,6 +5,12 @@ pipeline {
             args '-v /root/.m2:/root/.m2'
         }
     }
+
+    parameters {
+        choice(name: 'PROFILE', choices: ['local', 'dev', 'other'], description: '')
+        string(name: 'PRODUCT_NAME', defaultValue: 'Name', description: '')
+    }
+
     stages {
         stage("List files") {
             steps {
